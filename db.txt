@@ -45,5 +45,5 @@ INSERT INTO NHANVIEN (Ma_NV, Ten_NV, Phai, Noi_Sinh, Ma_Phong, Luong) VALUES
 
 -- Nhập dữ liệu vào USERS (tài khoản đăng nhập)
 INSERT INTO USERS (username, password, fullname, email, role) VALUES
-('admin', '123456', 'Admin User', 'admin@example.com', 'admin'),
-('user', '123456', 'Normal User', 'user@example.com', 'user');
+('admin', 'admin', 'Admin User', 'admin@example.com', 'admin'),
+('user', 'user', 'Normal User', 'user@example.com', 'user');
