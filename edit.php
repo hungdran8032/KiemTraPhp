@@ -1,34 +1,34 @@
 <?php
-session_start();
-include 'db.php';
+    session_start();
+    include 'db.php';
 
-if ($_SESSION['role'] != 'admin') {
-    header("Location: index.php");
-    exit();
-}
-
-$id = $_GET['id'];
-$sql = "SELECT * FROM NHANVIEN WHERE Ma_NV='$id'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $ma_nv = $_POST['Ma_NV'];
-    $ten_nv = $_POST['Ten_NV'];
-    $phai = $_POST['Phai'];
-    $noi_sinh = $_POST['Noi_Sinh'];
-    $ma_phong = $_POST['Ma_Phong'];
-    $luong = $_POST['Luong'];
-
-    $sql = "UPDATE NHANVIEN SET Ten_NV='$ten_nv', Phai='$phai', Noi_Sinh='$noi_sinh', 
-            Ma_Phong='$ma_phong', Luong='$luong' WHERE Ma_NV='$ma_nv'";
-
-    if (mysqli_query($conn, $sql)) {
+    if ($_SESSION['role'] != 'admin') {
         header("Location: index.php");
-    } else {
-        $error = "Lỗi: " . mysqli_error($conn);
+        exit();
     }
-}
+
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM NHANVIEN WHERE Ma_NV='$id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $ma_nv = $_POST['Ma_NV'];
+        $ten_nv = $_POST['Ten_NV'];
+        $phai = $_POST['Phai'];
+        $noi_sinh = $_POST['Noi_Sinh'];
+        $ma_phong = $_POST['Ma_Phong'];
+        $luong = $_POST['Luong'];
+
+        $sql = "UPDATE NHANVIEN SET Ten_NV='$ten_nv', Phai='$phai', Noi_Sinh='$noi_sinh', 
+                Ma_Phong='$ma_phong', Luong='$luong' WHERE Ma_NV='$ma_nv'";
+
+        if (mysqli_query($conn, $sql)) {
+            header("Location: index.php");
+        } else {
+            $error = "Lỗi: " . mysqli_error($conn);
+        }
+    }
 ?>
 
 <!DOCTYPE html>

@@ -1,23 +1,23 @@
 <?php
-session_start();
-include 'db.php';
+    session_start();
+    include 'db.php';
 
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
+    if (!isset($_SESSION['username'])) {
+        header("Location: login.php");
+        exit();
+    }
 
-$limit = 5;
-$page = isset($_GET['page']) ? $_GET['page'] : 1;
-$start = ($page - 1) * $limit;
+    $limit = 5;
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start = ($page - 1) * $limit;
 
-$sql = "SELECT n.*, p.Ten_Phong FROM NHANVIEN n JOIN PHONGBAN p ON n.Ma_Phong = p.Ma_Phong LIMIT $start, $limit";
-$result = mysqli_query($conn, $sql);
+    $sql = "SELECT n.*, p.Ten_Phong FROM NHANVIEN n JOIN PHONGBAN p ON n.Ma_Phong = p.Ma_Phong LIMIT $start, $limit";
+    $result = mysqli_query($conn, $sql);
 
-$total_sql = "SELECT COUNT(*) as total FROM NHANVIEN";
-$total_result = mysqli_query($conn, $total_sql);
-$total_row = mysqli_fetch_assoc($total_result);
-$total_pages = ceil($total_row['total'] / $limit);
+    $total_sql = "SELECT COUNT(*) as total FROM NHANVIEN";
+    $total_result = mysqli_query($conn, $total_sql);
+    $total_row = mysqli_fetch_assoc($total_result);
+    $total_pages = ceil($total_row['total'] / $limit);
 ?>
 
 <!DOCTYPE html>

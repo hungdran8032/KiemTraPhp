@@ -1,4 +1,5 @@
-
+Create database qlnhansu;
+use qlnhansu;
 
 -- Tạo bảng PHONGBAN
 CREATE TABLE PHONGBAN (
